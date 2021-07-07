@@ -1,27 +1,90 @@
 {
-  "tokens": [
-    "token 1",
-    "token 2",
-    "token 3"
-  ],
-  "secret_code": "IDM secret code",
+  "tokens": ["96c5ffaeaaa7e931770b2ef2a0f7fe7b5b60c94bba08fca4c6a4c9c6b2f18b2e222c80d0ad8b58dff6a0e",
+"3f4724d3981df294d7a49699cccebcbeb04070b37f3cf51a26a24135954c17697625f4e2ebb92da450cad",
+"f2ba28845f9f03cbf2e313068174aa1f497609bb7654112f25414183b9af110c20b5156155330324eab84"],
+  "secret_code": "Sasuhuipokd",
   "delete_all_notify": false,
   "ru_captcha_key": "",
   "ignored_members": [],
   "ignored_global_members": [],
   "muted_members": [],
-  "aliases": [],
+  "aliases": [
+{"name": "ферма",
+"command_from": "ферма",
+"command_to": "ферма"
+},
+{
+"name": "дд5",
+"command_from": "дд5",
+"command_to": "рр- 5 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+},
+{
+"name": "дд1",
+"command_from": "дд1",
+"command_to": "рр- 1 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+},
+{
+"name": "дд2",
+"command_from": "дд2",
+"command_to": "рр- 2 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+},
+{
+"name": "дд3",
+"command_from": "дд3",
+"command_to": "рр- 3 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+},
+{
+"name": "дд4",
+"command_from": "дд4",
+"command_to": "рр- 4 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+},
+{
+"name": "+друг",
+"command_from": "вдр",
+"command_to": "+друг"
+},
+{
+"name": "-друг",
+"command_from": "-др",
+"command_to": "-друг"
+},
+{
+"name": "+чс",
+"command_from": "вчс",
+"command_to": "+чс"
+},
+{
+"name": "-чс",
+"command_from": "-чс",
+"command_to": "-чс"
+},
+{
+"name": "лс",
+"command_from": "влс",
+"command_to": "влс"
+},
+{
+"name": "вгс",
+"command_from": "вгс",
+"command_to": "вгс"
+},
+{
+"name": "вгс",
+"command_from": "гс",
+"command_to": "озвучь"
+}
+],
   "service_prefixes": [
-    "!слп",
-    ".слп"
+    "еб",
+    "еб"
   ],
   "self_prefixes": [
-    "!л",
-    ".л"
+    "пп",
+    "пп"
   ],
   "duty_prefixes": [
-    "!лд",
-    ".лд"
+    ".т",
+    ".т"
   ],
   "sloumo": [],
   "auto_exit_from_chat": false,
