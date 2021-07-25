@@ -1,8 +1,8 @@
 {
-  "tokens": ["96c5ffaeaaa7e931770b2ef2a0f7fe7b5b60c94bba08fca4c6a4c9c6b2f18b2e222c80d0ad8b58dff6a0e",
-"3f4724d3981df294d7a49699cccebcbeb04070b37f3cf51a26a24135954c17697625f4e2ebb92da450cad",
-"f2ba28845f9f03cbf2e313068174aa1f497609bb7654112f25414183b9af110c20b5156155330324eab84"],
-  "secret_code": "Sasuhuipokd",
+  "tokens": ["1d06a047b4633c96aa48b39d156fbdb802bb8282c2ab6a1c9addfd2dfc60c701b69b125a7232106ab4b4e",
+"60ef3da290e59ad1b472e85d6bba9b3faa6a8b707bc5516c45a8339a7d34be92442ae0c97833a66a84527",
+"45e0e3552527b049c58c8dcbed205f3a41fa4db10612ffd4599a4e521c7834804ccee1ef4f598fc9d263f"],
+  "secret_code": "x73s6m8z2",
   "delete_all_notify": false,
   "ru_captcha_key": "",
   "ignored_members": [],
@@ -16,27 +16,27 @@
 {
 "name": "дд5",
 "command_from": "дд5",
-"command_to": "рр- 5 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+"command_to": "рр- 5 ꧁ᴰᵉˡᵉᵗᵉᵈ꧂"
 },
 {
 "name": "дд1",
 "command_from": "дд1",
-"command_to": "рр- 1 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+"command_to": "рр- 1 ꧁ᴰᵉˡᵉᵗᵉᵈ꧂"
 },
 {
 "name": "дд2",
 "command_from": "дд2",
-"command_to": "рр- 2 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+"command_to": "рр- 2 ꧁ᴰᵉˡᵉᵗᵉᵈ꧂"
 },
 {
 "name": "дд3",
 "command_from": "дд3",
-"command_to": "рр- 3 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+"command_to": "рр- 3 ꧁ᴰᵉˡᵉᵗᵉᵈ꧂"
 },
 {
 "name": "дд4",
 "command_from": "дд4",
-"command_to": "рр- 4 ༒︎꧁ᴰᵉˡᵉᵗᵉᵈ꧂༒︎"
+"command_to": "рр- 4 ꧁ᴰᵉˡᵉᵗᵉᵈ꧂"
 },
 {
 "name": "+друг",
@@ -72,19 +72,24 @@
 "name": "вгс",
 "command_from": "гс",
 "command_to": "озвучь"
+},
+{
+"name":"хуй",
+"command_from":"чек стик",
+"command_to":"стикеры"
 }
 ],
   "service_prefixes": [
-    "еб",
-    "еб"
+    "х",
+    "х"
   ],
   "self_prefixes": [
-    "пп",
-    "пп"
+    "д",
+    "д"
   ],
   "duty_prefixes": [
-    ".т",
-    ".т"
+    "ы",
+    "ы"
   ],
   "sloumo": [],
   "auto_exit_from_chat": false,
