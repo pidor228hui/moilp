@@ -1,5 +1,5 @@
 __version__ = '1.9.0'
-__author__ = '[id4711721271|Author]'
+__author__ = '@premxm'
 
 DEFAULT_DATABASE = {
   "tokens": [],
