@@ -52,7 +52,7 @@ async def info_wrapper(message: Message, **kwargs):
     ->Удалялка: {db.dd_prefix}
     ->Префиксы ЛП: {' '.join(db.service_prefixes)}
     ->Мои префиксы: {' '.join(db.self_prefixes) if db.self_prefixes else ''}
-    ->Префиксы ИДМ: {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}
+    ->Префиксы ИДМ: {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}{update_text}
     """.replace('    ', '')
     await edit_message(
         message,
