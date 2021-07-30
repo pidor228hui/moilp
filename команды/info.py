@@ -13,20 +13,21 @@ user = Blueprint(
 )
 
 
-@user.on.message_handler(FromMe(), text="<prefix:service_prefix> инфо")
+@user.on.message_handler(FromMe(), text="<prefix:service_prefix> модуль")
 @logger_decorator
 async def info_wrapper(message: Message, **kwargs):
     db = Database.get_current()
     version_rest = requests.get(const.VERSION_REST).json()
 
     if version_rest['version'] != const.__version__:
-        update_text = f"\n\n⚠ На эту вещь есть обнова {version_rest['version']}\n" \
+        update_text = f"К сожалению обновы нет.
+        Юшманов спит😒" \
                       f"{version_rest['description']}\n"
     else:
         update_text = ""
 
     text = f"""
-    🦊 Lis Test Lp v{__version__} by {__author__}
+    🦊 Lisov Lp v{__version__} by {__author__} 
 
     🍃 рукаптча: {"&#9989;" if db.ru_captcha_key else "&#10060;"}
     ⚠️ Удаление уведов: {"&#9989;" if db.delete_all_notify else "&#10060;"}
@@ -48,10 +49,10 @@ async def info_wrapper(message: Message, **kwargs):
 
     🤗 Ответка в ебало: {"&#9989;" if db.bio_reply else "&#10060;"}
         
-    ▶ Удалялка: {db.dd_prefix}
-    ▶ Префиксы ЛП: {' '.join(db.service_prefixes)}
-    ▶ Мои префиксы: {' '.join(db.self_prefixes) if db.self_prefixes else ''}
-    ▶ Префиксы ИДМ: {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}{update_text}
+    ->Удалялка: {db.dd_prefix}
+    ->Префиксы ЛП: {' '.join(db.service_prefixes)}
+    ->Мои префиксы: {' '.join(db.self_prefixes) if db.self_prefixes else ''}
+    ->Префиксы ИДМ: {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}
     """.replace('    ', '')
     await edit_message(
         message,
