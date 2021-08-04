@@ -53,7 +53,7 @@ async def info_wrapper(message: Message, **kwargs):
     🔺Префиксы ИДМ: {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}
     
     
-    [https://vk.com/wall-206192128_1|Команды тут]
+    [https://vk.com/wall-206192128_5|Команды тут]
     """.replace('    ', '')
     await edit_message(
         message,
