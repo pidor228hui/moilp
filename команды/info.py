@@ -35,9 +35,7 @@ async def info_wrapper(message: Message, **kwargs):
     ❌ Гл.ИгнорЛист: {len(db.ignored_global_members)}
     🔇 Muted: {len(db.muted_members)}
     ❤️ Dovs: {len(db.trusted)}
-    🔰 Alias: {len(db.aliases)}
     
-
     🚶 Leave chat: {"on&#9989;" if db.auto_exit_from_chat else "off&#10060;"}
     🔞 Deleted chat: {"on&#9989;" if db.auto_exit_from_chat_delete_chat else "off&#10060;"}
     🏳️‍🌈 Black list пригласивший: {"on&#9989;" if db.auto_exit_from_chat_add_to_black_list else "off&#10060;"}
@@ -52,8 +50,8 @@ async def info_wrapper(message: Message, **kwargs):
     ⚕️Мои префиксы: {' '.join(db.self_prefixes) if db.self_prefixes else ''}
     🔺Префиксы ИДМ: {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}
     
+    [https://vk.com/wall-206192128_5|Команды этого LP тут]
     
-    [https://vk.com/wall-206192128_5|Команды тут]
     """.replace('    ', '')
     await edit_message(
         message,
