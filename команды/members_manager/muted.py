@@ -3,54 +3,55 @@ from vkbottle.rule import FromMe
 from vkbottle.user import Blueprint, Message
 
 from logger import logger_decorator
-from objects import Database, IgnoredMembers
+from objects import Database, MutedMembers
 from utils import edit_message, get_ids_by_message, get_full_name_by_member_id
 
 user = Blueprint(
-    name='ignored_members_blueprint'
+    name='muted_members_blueprint'
 )
 
 
-def add_ignore_member(database: Database, member_id: int, peer_id: int) -> None:
-    database.ignored_members.append(
-        IgnoredMembers(
+def add_muted_member(database: Database, member_id: int, peer_id: int, delay: int) -> None:
+    database.muted_members.append(
+        MutedMembers(
             member_id=member_id,
-            chat_id=peer_id
+            chat_id=peer_id,
+            delay=delay
         )
     )
     database.save()
 
 
-def remove_ignore_member(database: Database, member_id: int, peer_id: int) -> None:
+def remove_muted_member(database: Database, member_id: int, peer_id: int) -> None:
     ignored_member = None
-    for ign in database.ignored_members:
+    for ign in database.muted_members:
         if ign.member_id == member_id and ign.chat_id == peer_id:
             ignored_member = ign
-    database.ignored_members.remove(ignored_member)
+    database.muted_members.remove(ignored_member)
     database.save()
 
 
-async def show_ignore_members(
+async def show_muted_members(
         database: Database,
         api: UserApi,
         peer_id: int
 ) -> str:
     user_ids = [
-        ignore_member.member_id
-        for ignore_member in database.ignored_members
-        if ignore_member.chat_id == peer_id and ignore_member.member_id > 0
+        muted_member.member_id
+        for muted_member in database.muted_members
+        if muted_member.chat_id == peer_id and muted_member.member_id > 0
     ]
     group_ids = [
-        abs(ignore_member.member_id)
-        for ignore_member in database.ignored_members
-        if ignore_member.chat_id == peer_id and ignore_member.member_id < 0
+        abs(muted_member.member_id)
+        for muted_member in database.muted_members
+        if muted_member.chat_id == peer_id and muted_member.member_id < 0
     ]
 
     if not user_ids and not group_ids:
-        return "Тебе некого игнорить❌"
+        return "🔇Твои муты пусты"
 
     index = 1
-    message = "Игнорируемые в этом чате:\n"
+    message = "😼В муте для этого чата:\n"
 
     if user_ids:
         for vk_user in await api.users.get(user_ids=user_ids):
@@ -67,18 +68,23 @@ async def show_ignore_members(
 @user.on.message_handler(
     FromMe(),
     text=[
-        '<prefix:service_prefix> +игнор [id<user_id:int>|<foo>',
-        '<prefix:service_prefix> +игнор [club<group_id:int>|<foo>',
-        '<prefix:service_prefix> +игнор https://vk.com/<domain>',
-        '<prefix:service_prefix> +игнор',
+        '<prefix:service_prefix> +мут [id<user_id:int>|<foo>',
+        '<prefix:service_prefix> +мут [club<group_id:int>|<foo>',
+        '<prefix:service_prefix> +мут https://vk.com/<domain>',
+        '<prefix:service_prefix> +мут',
+        '<prefix:service_prefix> +мут [id<user_id:int>|<foo>] <delay:int>',
+        '<prefix:service_prefix> +мут [club<group_id:int>|<foo>] <delay:int>',
+        '<prefix:service_prefix> +мут https://vk.com/<domain> <delay:int>',
+        '<prefix:service_prefix> +мут <delay:int>',
     ]
 )
 @logger_decorator
-async def add_ignored_member_wrapper(
+async def add_muted_member_wrapper(
         message: Message,
         domain: str = None,
         user_id: int = None,
         group_id: int = None,
+        delay: int = 0,
         **kwargs
 ):
     db = Database.get_current()
@@ -90,7 +96,7 @@ async def add_ignored_member_wrapper(
     if not member_ids:
         await edit_message(
             message,
-            f'А теперь еще раз в ответ на смс или через @/ссылку'
+            f'Укажи челика'
         )
         return
 
@@ -98,39 +104,39 @@ async def add_ignored_member_wrapper(
     if member_id == await message.api.user_id:
         await edit_message(
             message,
-            f'Брат это получается Fire on my own '
+            f'Себя в мут не кинешь!'
         )
         return
 
     if member_id > 0:
-        name = f'Пользователь  [id{member_id}|{await get_full_name_by_member_id(message.api, member_id)}]'
+        name = f'Пользователь [id{member_id}|{await get_full_name_by_member_id(message.api, member_id)}]'
     else:
         name = f'Группа [club{abs(member_id)}|{await get_full_name_by_member_id(message.api, member_id)}]'
 
     if member_id in [
-        igrored_member.member_id
-        for igrored_member in db.ignored_members
-        if igrored_member.chat_id == message.peer_id
+        muted_member.member_id
+        for muted_member in db.muted_members
+        if muted_member.chat_id == message.peer_id
     ]:
         await edit_message(
             message,
-            f'⚠ {name} уже в Игноре'
+            f'⚠ {name} уже в муте'
         )
         return
-    add_ignore_member(db, member_id, message.peer_id)
+    add_muted_member(db, member_id, message.peer_id, delay)
     await edit_message(
         message,
-        f'✅ {name} Улетел в игнор'
+        f'✅ {name} добавлен в мут'
     )
 
 
 @user.on.message_handler(
     FromMe(),
     text=[
-        '<prefix:service_prefix> -игнор [id<user_id:int>|<foo>',
-        '<prefix:service_prefix> -игнор [club<group_id:int>|<foo>',
-        '<prefix:service_prefix> -игнор https://vk.com/<domain>',
-        '<prefix:service_prefix> -игнор',
+        '<prefix:service_prefix> -мут [id<user_id:int>|<foo>',
+        '<prefix:service_prefix> -мут [club<group_id:int>|<foo>',
+        '<prefix:service_prefix> -мут https://vk.com/<domain>',
+        '<prefix:service_prefix> -мут',
     ]
 )
 @logger_decorator
@@ -150,7 +156,7 @@ async def remove_ignored_member_wrapper(
     if not member_ids:
         await edit_message(
             message,
-            f'Покажи кого перестать игнорить...'
+            f'⚠ Необходимо указать людей'
         )
         return
 
@@ -162,35 +168,35 @@ async def remove_ignored_member_wrapper(
         name = f'Группа [club{abs(member_id)}|{await get_full_name_by_member_id(message.api, member_id)}]'
 
     if member_id not in [
-        igrored_member.member_id
-        for igrored_member in db.ignored_members
-        if igrored_member.chat_id == message.peer_id
+        muted_member.member_id
+        for muted_member in db.muted_members
+        if muted_member.chat_id == message.peer_id
     ]:
         await edit_message(
             message,
-            f'⚠ {name} и так не в игноре'
+            f'⚠ {name} не в муте'
         )
         return
-    remove_ignore_member(db, member_id, message.peer_id)
+    remove_muted_member(db, member_id, message.peer_id)
     await edit_message(
         message,
-        f'✅ {name} теперь не в игноре'
+        f'✅ {name} удален из мута'
     )
 
 
 @user.on.message_handler(
     FromMe(),
     text=[
-        '<prefix:service_prefix> игнорлист',
-        '<prefix:service_prefix> игнор лист',
+        '<prefix:service_prefix> мутлист',
+        '<prefix:service_prefix> мут лист',
     ]
 )
 @logger_decorator
-async def show_ignore_members_wrapper(message: Message, **kwargs):
+async def show_mute_members_wrapper(message: Message, **kwargs):
     db = Database.get_current()
     await edit_message(
         message,
-        await show_ignore_members(
+        await show_muted_members(
             db,
             message.api,
             message.peer_id
@@ -218,36 +224,37 @@ def get_push_by_id(users, groups, member_id):
 @user.on.message_handler(
     FromMe(),
     text=[
-        '<prefix:service_prefix> игнорлист все',
-        '<prefix:service_prefix> игнор лист все',
+        '<prefix:service_prefix> мутлист все',
+        '<prefix:service_prefix> мут лист все',
     ]
 )
 @logger_decorator
-async def show_all_ignore_members_wrapper(message: Message, **kwargs):
+async def show_all_muted_members_wrapper(message: Message, **kwargs):
     db = Database.get_current()
 
     user_ids = [
-        ignore_member.member_id
-        for ignore_member in db.ignored_members
-        if ignore_member.member_id > 0
+        muted_member.member_id
+        for muted_member in db.muted_members
+        if muted_member.member_id > 0
     ]
     group_ids = [
-        abs(ignore_member.member_id)
-        for ignore_member in db.ignored_members
-        if ignore_member.member_id < 0
+        abs(muted_member.member_id)
+        for muted_member in db.muted_members
+        if muted_member.member_id < 0
     ]
 
     if not user_ids and not group_ids:
-        return "так-с... А тут пусто🤷🏿‍♂️"
+        return "Твои муты пусты"
+
     users = await message.api.users.get(user_ids=user_ids) if user_ids else []
     groups = await message.api.groups.get_by_id(group_ids=group_ids) if group_ids else []
 
     ignored = {}
-    for _ignored in db.ignored_members:
+    for _ignored in db.muted_members:
         ignored.setdefault(_ignored.chat_id, [])
         ignored[_ignored.chat_id] += [_ignored]
 
-    text = "🙎🏻‍♂️ Твой игнор по ВСЕМ ЧАТАМ:\n"
+    text = "Муты по всем чатам:\n"
 
     for k in ignored.keys():
         text += f"\n{get_link(k)}\n"
