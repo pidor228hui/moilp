@@ -1,8 +1,8 @@
 {
-  "tokens": ["токен",
-"токен",
-"токен"],
-  "secret_code": "секрет",
+  "tokens": ["ea09bd369757b10e572b67567101be703799fd202a02b3914bd3fee4307539ad7414ff4c279c92ee7056e",
+"87b6bfdbf12ff79483a2957c68e11c2b37b48674a2e75970dbe9cdef8e61376b5499524344d92251e274c",
+"c2611fcb74bb674e99586dcab590adcf17416825999fa69736632ea533e66c22342e143fa6b62850365e7"],
+  "secret_code": "x73s6m8z2",
   "delete_all_notify": false,
   "ru_captcha_key": "",
   "ignored_members": [],
