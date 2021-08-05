@@ -64,16 +64,14 @@ async def add_alias_wrapper(message: Message, alias_name: str, command_from: str
         if alias_name == alias.name:
             await edit_message(
                 message,
-                f"Братишка Алиас с названием: <<{alias_name}>> уже существует.
-                Придумай другое название👹"
+                f"Братишка Алиас с названием: <<{alias_name}>> уже существует.\nПридумай другое название👹"
             )
             return
 
     new_alias = add_alias(db, alias_name, command_from, command_to)
     await edit_message(
         message,
-        f"😈Создаю алиас с названием: <<{alias_name}>> \n"
-        f"Команды: {new_alias.command_from} -> !л {command_to}"
+        f"😈Создаю алиас с названием: <<{alias_name}>> \nКоманды: {new_alias.command_from} -> !л {command_to}"
     )
 
 
