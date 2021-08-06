@@ -20,7 +20,7 @@ async def info_wrapper(message: Message, **kwargs):
     version_rest = requests.get(const.VERSION_REST).json()
 
     if version_rest['version'] != const.__version__:
-        update_text = f"\n\n🖇️Обновы будут тогда \n" Когда выучу python \
+        update_text = f"\n\n🖇️Обновы будут тогда \n Когда выучу python" \
                       f"\n"
     else:
         update_text = ""
