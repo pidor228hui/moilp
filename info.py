@@ -26,7 +26,7 @@ async def info_wrapper(message: Message, **kwargs):
         update_text = ""
 
     text = f"""
-    🦊 Drocher228 by {__author__} 
+    🦊 Lisov LP by {__author__} 
     
     ⚠️ Удаление уведов: {"on&#9989;" if db.delete_all_notify else "off&#10060;"}
     🔕 Вкл/Выкл уведы: {"on&#9989;" if db.disable_notifications else "off&#10060;"}
