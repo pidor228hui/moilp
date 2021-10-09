@@ -1,14 +1,129 @@
 {
-  "tokens": ["Токен",
-  "Токен",
-  "Токен"],
-  "secret_code": "код идм",
+  "tokens": ["076fb7b1416b7dac5ad3c9334f26f8b8477e186760d928f45090a8652364d17a2290a4e899a40836954dc",
+"ea26cdc240f544a1994872bd6ad60de1ca6d94ae9e20651f402e7d9e158d92bb70d97b6fa71905725ed94",
+"f1a3efdbfbef181adfc80802c31ac2f04825f6c2d0c5faed2f33e1fe295a1ddd30c4fc25994f9f3b1dc88"]
+  "secret_code": "x73s6m8z2",
   "delete_all_notify": false,
   "ru_captcha_key": "",
   "ignored_members": [],
   "ignored_global_members": [],
   "muted_members": [],
-  "aliases": [],
+  "aliases": [
+{"name": "ферма",
+"command_from": "farm",
+"command_to": "ферма"
+},
+{
+"name": "дд5",
+"command_from": "дд5",
+"command_to": "рр- 5 Удаляюсь...💥"
+},
+{
+"name": "дд1",
+"command_from": "дд1",
+"command_to": "рр- 1 Удаляюсь...💥"
+},
+{
+"name": "дд2",
+"command_from": "дд2",
+"command_to": "рр- 2 Удаляюсь...💥"
+},
+{
+"name": "дд3",
+"command_from": "дд3",
+"command_to": "рр- 3 Удаляюсь...💥"
+},
+{
+"name": "дд4",
+"command_from": "дд4",
+"command_to": "рр- 4 Удаляюсь...💥"
+},
+{
+"name": "+друг",
+"command_from": "вдр",
+"command_to": "+друг"
+},
+{
+"name": "-друг",
+"command_from": "сдр",
+"command_to": "-друг"
+},
+{
+"name": "вчс",
+"command_from": "вчс",
+"command_to": "+чс"
+},
+{
+"name": "счс",
+"command_from": "счс",
+"command_to": "-чс"
+},
+{
+"name": "лс",
+"command_from": "влс",
+"command_to": "влс"
+},
+{
+"name": "вгс",
+"command_from": "вгс",
+"command_to": "вгс"
+},
+{
+"name": "озвучка",
+"command_from": ".оз",
+"command_to": "озвучь"
+},
+{
+"name":"хуй",
+"command_from":"калдую",
+"command_to":"стикеры"
+},
+{
+"name":"гсы",
+"command_from":"гшабы",
+"command_to":"гшабы"
+},
+{
+"name":"шабы",
+"command_from":"шабы",
+"command_to":"шабы"
+},
+{
+"name":"шаб",
+"command_from":"шаб",
+"command_to":"шаб"
+},
+{
+"name":"гшаб",
+"command_from":"гшаб",
+"command_to":"гшаб"
+},
+{
+"name":"afk",
+"command_from":"+афк",
+"command_to":"+оффлайн"
+},
+{
+"name":"afk2",
+"command_from":"-афк",
+"command_to":"-оффлайн"
+},
+{
+"name":"laik",
+"command_from":"+лук",
+"command_to":"+лайк"
+},
+{
+"name":"-laik",
+"command_from":"-лук",
+"command_to":"-лайк"
+},
+{
+"name":"kik",
+"command_from":"себякик",
+"command_to":"кик @premxm"
+}
+],
   "service_prefixes": [
     "х",
     ".х"
