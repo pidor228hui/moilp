@@ -21,6 +21,11 @@ if const.ALLOW_SENTRY:
         traces_sample_rate=1.0
     )
 
+parser = argparse.ArgumentParser(
+    description='LP модуль позволяет работать приемнику сигналов «IDM multi» работать в любых чатах.\n'
+                'Так же он добавляет игнор, глоигнор, мут и алиасы.'
+)
+
 parser.add_argument(
     '--config_path',
     type=str,
@@ -66,12 +71,14 @@ parser.add_argument(
 def lp_startup(database):
     async def _lp_startup():
         api = UserApi.get_current()
-        text = f'🦊 LP от [https://m.vk.com/premxm|Lisov] запущен.\n' \
-               f'Версия LP {const.__version__}'
+        text = f'IDM multi LP запущен\n' \
+               f'Текущая версия: v{const.__version__}'
         version_rest = requests.get(const.VERSION_REST).json()
 
         if version_rest['version'] != const.__version__:
-            text 
+            text += f"\n\n Доступно обновление {version_rest['version']}\n" \
+                    f"{version_rest['description']}\n" \
+                    f"{const.GITHUB_LINK}"
 
         await api.messages.send(
             peer_id=await api.user_id,
