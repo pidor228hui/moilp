@@ -76,6 +76,7 @@ def lp_startup(database):
         version_rest = requests.get(const.VERSION_REST).json()
 
         if version_rest['version'] != const.__version__:
+        text
 
         await api.messages.send(
             peer_id=await api.user_id,
