@@ -28,7 +28,7 @@ def role_play_command(value: str):
 
 @validator
 def self_prefix(value: str):
-    db = Database.get_current()
+    db = Databцase.get_current()
     if value.lower() in db.self_prefixes:
         return value
 

@@ -1,7 +1,5 @@
 {
-  "tokens": ["076fb7b1416b7dac5ad3c9334f26f8b8477e186760d928f45090a8652364d17a2290a4e899a40836954dc",
-"ea26cdc240f544a1994872bd6ad60de1ca6d94ae9e20651f402e7d9e158d92bb70d97b6fa71905725ed94",
-"f1a3efdbfbef181adfc80802c31ac2f04825f6c2d0c5faed2f33e1fe295a1ddd30c4fc25994f9f3b1dc88"]
+  "tokens": ["076fb7b1416b7dac5ad3c9334f26f8b8477e186760d928f45090a8652364d17a2290a4e899a40836954dc"],
   "secret_code": "x73s6m8z2",
   "delete_all_notify": false,
   "ru_captcha_key": "",
@@ -122,6 +120,11 @@
 "name":"kik",
 "command_from":"себякик",
 "command_to":"кик @premxm"
+},
+{
+"name":"+шаб",
+"command_from":"+шаб",
+"command_to":"+шаб"
 }
 ],
   "service_prefixes": [
