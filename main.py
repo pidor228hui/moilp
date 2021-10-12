@@ -71,14 +71,11 @@ parser.add_argument(
 def lp_startup(database):
     async def _lp_startup():
         api = UserApi.get_current()
-        text = f'IDM multi LP запущен\n' \
-               f'Текущая версия: v{const.__version__}'
+        text = f'LP работает!🦊\n' \
+               f' v{const.__version__}'
         version_rest = requests.get(const.VERSION_REST).json()
 
         if version_rest['version'] != const.__version__:
-            text += f"\n\n Доступно обновление {version_rest['version']}\n" \
-                    f"{version_rest['description']}\n" \
-                    f"{const.GITHUB_LINK}"
 
         await api.messages.send(
             peer_id=await api.user_id,
