@@ -51,9 +51,8 @@ async def info_wrapper(message: Message, **kwargs):
     await edit_message(
         message,
         text
-        
-        async def get_ping(message: Message, answer: str) -> str:
-    delta = round(time.time() - message.date, 2)
+async def get_ping(message: Message, answer: str) -> str:
+    delta = round(time.time() - message.date, 2)        
 
     if delta < 0:
         delta = "666"
