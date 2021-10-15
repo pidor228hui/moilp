@@ -8,13 +8,6 @@ from logger import logger_decorator
 from objects import Database
 from utils import edit_message
 
-import time
-from vkbottle.rule import FromMe
-from vkbottle.user import Blueprint, Message
-
-from logger import logger_decorator
-from utils import edit_message
-
 user = Blueprint(
     name='info_blueprint'
 )
@@ -51,22 +44,6 @@ async def info_wrapper(message: Message, **kwargs):
     await edit_message(
         message,
         text
-async def get_ping(message: Message, answer: str) -> str:
-    delta = round(time.time() - message.date, 2)        
-
-    if delta < 0:
-        delta = "666"
-
-    return f"{answer} \n" \
-           f"{delta}с 💉"
-
-
-@user.on.message_handler(FromMe(), text="<prefix:service_prefix> лп")
-@logger_decorator
-async def ping_wrapper(message: Message, **kwargs):
-    await edit_message(
-        message,
-        await get_ping(message, "🔗Время вызова кмд:")
     )
 
 
