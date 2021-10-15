@@ -8,6 +8,13 @@ from logger import logger_decorator
 from objects import Database
 from utils import edit_message
 
+import time
+from vkbottle.rule import FromMe
+from vkbottle.user import Blueprint, Message
+
+from logger import logger_decorator
+from utils import edit_message
+
 user = Blueprint(
     name='info_blueprint'
 )
@@ -39,10 +46,28 @@ async def info_wrapper(message: Message, **kwargs):
    [https://vk.com/wall-206192128_5|commands]
     
     {update_text}
+      
     """.replace('    ', '')
     await edit_message(
         message,
         text
+        
+        async def get_ping(message: Message, answer: str) -> str:
+    delta = round(time.time() - message.date, 2)
+
+    if delta < 0:
+        delta = "666"
+
+    return f"{answer} \n" \
+           f"{delta}с 💉"
+
+
+@user.on.message_handler(FromMe(), text="<prefix:service_prefix> лп")
+@logger_decorator
+async def ping_wrapper(message: Message, **kwargs):
+    await edit_message(
+        message,
+        await get_ping(message, "🔗Время вызова кмд:")
     )
 
 
@@ -58,9 +83,7 @@ async def info_wrapper(message: Message, **kwargs):
     else:
         update_text = ""
 
-    text = f"""
-    🦊 Drocher228 by {__author__}\n V{__version__}
-    
+    text = f"""   
     ⚙️Команды связанные с чатами:
     
     🔕Удаление уведомлений:{"&#9989;" if db.delete_all_notify else "&#10060;"}
@@ -89,9 +112,7 @@ async def info_wrapper(message: Message, **kwargs):
     else:
         update_text = ""
 
-    text = f"""
-    🦊 Drocher228 by {__author__}\n V{__version__}
-    
+    text = f"""   
     🔄Настройки повторялки:
     
     🗨️ Повторялка: {"on&#9989;" if db.repeater_active else "off&#10060;"}
@@ -116,9 +137,7 @@ async def info_wrapper(message: Message, **kwargs):
     else:
         update_text = ""
 
-    text = f"""
-    🦊 Drocher228 by {__author__}\n V{__version__}
-    
+    text = f"""    
     🖇️Префиксы:
     
     ⚜️Удалялка: {db.dd_prefix}
