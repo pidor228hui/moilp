@@ -25,25 +25,25 @@ async def send_request(request_data: dict):
     async with aiohttp.ClientSession() as session:
         async with session.post(const.CALLBACK_LINK, json=request_data) as resp:
             if resp.status != 200:
-                message = f"⚠ Ошибка сервера IDM Multi. Сервер, ответил кодом {resp.status}."
+                message = f"Ошибка со стороны IDM: {resp.status}."
             else:
                 data_json = await resp.json()
                 if data_json['response'] == 'ok':
                     return
                 elif data_json['response'] == "error":
                     if data_json.get('error_code') == 1:
-                        message = f"⚠ Ошибка сервера IDM Multi. Сервер, ответил: <<Пустой запрос>>"
+                        message = f"Ошибка со стороны IDM. Сервер, ответил: <<Пустой запрос>>"
                     elif data_json.get('error_code') == 2:
-                        message = f"⚠ Ошибка сервера IDM Multi. Сервер, ответил: <<Неизвестный тип сигнала>>"
+                        message = f"Ошибка: <<Неизвестный тип сигнала>>"
                     elif data_json.get('error_code') == 3:
                         message = (
-                            f"⚠ Ошибка сервера IDM Multi. "
+                            f"Ошибка IDM "
                             f"Сервер, ответил: <<Пара пользователь/секрет не найдены>>"
                         )
                     elif data_json.get('error_code') == 4:
-                        message = f"⚠ Ошибка сервера IDM Multi. Сервер, ответил: <<Беседа не привязана>>"
+                        message = f"Ошибка со стороны IDM. Сервер, ответил: <<Беседа не привязана>>"
                     elif data_json.get('error_code') == 10:
-                        message = f"⚠ Ошибка сервера IDM Multi. Сервер, ответил: <<Не удалось связать беседу>>"
+                        message = f"Ошибка со стороны IDM. Сервер, ответил: <<Не удалось связать беседу>>"
                     else:
                         message = (
                             f"⚠ Ошибка сервера IDM Multi. "
