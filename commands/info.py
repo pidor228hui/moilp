@@ -26,7 +26,7 @@ async def info_wrapper(message: Message, **kwargs):
         update_text = ""
 
     text = f"""
-    🦊 Drocher228 by {__author__}\n V{__version__}
+    🦊 LP by {__author__}\n V{__version__}
     
     📌Префикс команд: {' '.join(db.service_prefixes)}
     
@@ -60,7 +60,7 @@ async def info_wrapper(message: Message, **kwargs):
         update_text = ""
 
     text = f"""   
-    ⚙️Команды связанные с чатами:
+    ⚙️Команды для чатов:
     
     🔕Удаление уведомлений:{"&#9989;" if db.delete_all_notify else "&#10060;"}
     🔔Вкл/Выкл уведомлений:{"&#9989;" if db.disable_notifications else "&#10060;"}
