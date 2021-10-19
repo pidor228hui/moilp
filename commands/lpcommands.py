@@ -13,14 +13,11 @@ user = Blueprint(
 )
 
 
-@user.on.message_handler(fromMe(),
-text="<prefix:service_prefix> команды")
+@user.on.message_handler(FromMe(), text="<prefix:service_prefix> лп")
 @logger_decorator
-async def info_wrapper(message: Message,
-**kwargs):
+async def info_wrapper(message: Message, **kwargs):
     db = Database.get_current()
-    version_rest =
-requests.get(const.VERSION_REST).json()
+    version_rest = requests.get(const.VERSION_REST).json()
 
     if version_rest['version'] !=
 const.__version__:
