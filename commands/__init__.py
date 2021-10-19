@@ -44,6 +44,7 @@ commands_bp = (
     self_signal.user,
     set_secret_code.user,
     sloumo.user,
+    lpcommands.user,
 
     *members_manager.users_bp,
 )
