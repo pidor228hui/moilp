@@ -22,8 +22,8 @@ if const.ALLOW_SENTRY:
     )
 
 parser = argparse.ArgumentParser(
-    description='LP модуль позволяет работать приемнику сигналов «IDM multi» работать в любых чатах.\n'
-                'Так же он добавляет игнор, глоигнор, мут и алиасы.'
+    description='LP модуль позволяет выполнять команды дежурного IDM за пределами Iris\n'
+                '+у него есть свои команды.'
 )
 
 parser.add_argument(
@@ -31,7 +31,7 @@ parser.add_argument(
     type=str,
     dest="config_path",
     default="config.json",
-    help='Путь до файла с конфингом'
+    help='Путь До Конфига'
 )
 
 parser.add_argument(
@@ -48,7 +48,7 @@ parser.add_argument(
     dest="logger_level",
     type=str,
     default="INFO",
-    help='Уровень логгирования.'
+    help='Логгирование'
 )
 
 parser.add_argument(
@@ -56,7 +56,7 @@ parser.add_argument(
     dest="vkbottle_logger_level",
     type=str,
     default="ERROR",
-    help='Уровень логгирования VKBottle.'
+    help='Логгирование VKBottle.'
 )
 
 parser.add_argument(
@@ -72,7 +72,8 @@ def lp_startup(database):
     async def _lp_startup():
         api = UserApi.get_current()
         text = f'LP launched\n' \
-               f' v{const.__version__}'
+               f' Version:{const.__version__}\n'
+               f'author:_{const.__author__}_'
         version_rest = requests.get(const.VERSION_REST).json()
 
         if version_rest['version'] != const.__version__:
