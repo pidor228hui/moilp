@@ -20,7 +20,7 @@ async def info_wrapper(message: Message, **kwargs):
     version_rest = requests.get(const.VERSION_REST).json()
 
     if version_rest['version'] != const.__version__:
-        update_text = f"\n\n Обновление у вас\n на глазах📡"  \
+        update_text = f"\n\n [https://vk.com/lislp|Запись в группе про обновление 1.1.7]"  \
                       f"\n"
     else:
         update_text = ""
@@ -36,9 +36,7 @@ async def info_wrapper(message: Message, **kwargs):
     
     🛡️Алиасы: {len(db.aliases)}
     
-   [https://vk.com/wall-206192128_5|commands]
-    
-    {update_text}
+    Updates:{update_text}
       
     """.replace('    ', '')
     await edit_message(

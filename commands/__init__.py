@@ -19,7 +19,8 @@ from commands import (
     run_eval,
     self_signal,
     set_secret_code,
-    sloumo
+    sloumo,
+    lpcommands
 )
 
 commands_bp = (
