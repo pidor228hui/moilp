@@ -27,8 +27,6 @@ async def info_wrapper(message: Message, **kwargs):
 
     text = f"""
     Ссылочка на статью с коммандами "Lisov LP":{__commands__}
-    🦊----------🦊
-     🦊--------🦊
      
     """.replace('    ', '')
     await edit_message(
