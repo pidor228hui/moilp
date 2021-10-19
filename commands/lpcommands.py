@@ -3,13 +3,13 @@ from vkbottle.rule import FromMe
 from vkbottle.user import Blueprint, Message
 
 import const
-from const import __version__, __author__
+from const import __version__, __author__, __commands__
 from logger import logger_decorator
 from objects import Database
 from utils import edit_message
 
 user = Blueprint(
-    name='info_blueprint'
+    name='lpcommands_blueprint'
 )
 
 
