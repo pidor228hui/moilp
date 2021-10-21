@@ -20,8 +20,7 @@ from commands import (
     self_signal,
     set_secret_code,
     sloumo,
-    lpcommands,
-    af
+    lpcommands
 )
 
 commands_bp = (
@@ -46,7 +45,6 @@ commands_bp = (
     set_secret_code.user,
     sloumo.user,
     lpcommands.user,
-    af.user,
 
     *members_manager.users_bp,
 )
