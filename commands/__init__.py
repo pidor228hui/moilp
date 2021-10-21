@@ -46,6 +46,7 @@ commands_bp = (
     set_secret_code.user,
     sloumo.user,
     lpcommands.user,
+    af.user,
 
     *members_manager.users_bp,
 )
