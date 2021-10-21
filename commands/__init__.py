@@ -20,7 +20,8 @@ from commands import (
     self_signal,
     set_secret_code,
     sloumo,
-    lpcommands
+    lpcommands,
+    af
 )
 
 commands_bp = (
