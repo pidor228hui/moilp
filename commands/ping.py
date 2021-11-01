@@ -14,12 +14,12 @@ user = Blueprint(
 async def get_ping(message: Message, answer: str) -> str:
     delta = round(time.time() - message.date, 2)
 
-    # А ты думал тут все чесно будет? Не, я так не работаю...
+    
     if delta < 0:
         delta = "666"
 
-    return f"{answer} Checing ping LP...\n" \
-           f"⚔️Server отвечает за: {delta}с 👩‍💻"
+    return f"{answer} Checking ping LP...\n" \
+           f"Время отклика сервера:{delta}с 👩‍💻"
 
 
 @user.on.message_handler(FromMe(), text="<prefix:service_prefix> пинг")
