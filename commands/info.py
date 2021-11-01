@@ -139,7 +139,6 @@ async def info_wrapper(message: Message, **kwargs):
     )
 
 
-@user.on.message_handler(FromMe(), text="<prefix:service_prefix> лп")
 @logger_decorator
 async def ping_wrapper(message: Message, **kwargs):
     await edit_message(
