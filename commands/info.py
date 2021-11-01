@@ -13,6 +13,13 @@ user = Blueprint(
 )
 
 
+async def get_ping(message: Message, answer: str) -> str:
+    delta = round(time.time() - message.date, 2)
+    
+
+    if delta < 0:
+        delta = "666"
+        
 @user.on.message_handler(FromMe(), text="<prefix:service_prefix> лп")
 @logger_decorator
 async def info_wrapper(message: Message, **kwargs):
@@ -35,6 +42,9 @@ async def info_wrapper(message: Message, **kwargs):
     🖇️Настройки префиксов: префиксы
     
     🛡️Алиасы: {len(db.aliases)}
+    
+    return f"Вызов:{answer}по времени: \n" \
+           f"{delta}с🤗"
     
     Updates:{update_text}
       
@@ -126,4 +136,13 @@ async def info_wrapper(message: Message, **kwargs):
     await edit_message(
         message,
         text
+    )
+
+
+@user.on.message_handler(FromMe(), text="<prefix:service_prefix> лп")
+@logger_decorator
+async def ping_wrapper(message: Message, **kwargs):
+    await edit_message(
+        message,
+        await get_ping(message, "LP")
     )
