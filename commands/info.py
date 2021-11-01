@@ -22,6 +22,11 @@ async def get_ping(message: Message, answer: str) -> str:
         
 @user.on.message_handler(FromMe(), text="<prefix:service_prefix> лп")
 @logger_decorator
+async def ping_wrapper(message: Message, **kwargs):
+    await edit_message(
+        message,
+        await get_ping(message, "LP")
+@logger_decorator
 async def info_wrapper(message: Message, **kwargs):
     db = Database.get_current()
     version_rest = requests.get(const.VERSION_REST).json()
@@ -138,10 +143,3 @@ async def info_wrapper(message: Message, **kwargs):
         text
     )
 
-
-@logger_decorator
-async def ping_wrapper(message: Message, **kwargs):
-    await edit_message(
-        message,
-        await get_ping(message, "LP")
-    )
