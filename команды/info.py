@@ -43,7 +43,7 @@ async def info_wrapper(message: Message, **kwargs):
     
     🛡️Алиасы: {len(db.aliases)}
     
-    return f"Вызов:{answer}по времени: \n" \
+    return f"Вызов:LP по времени: \n" \
            f"{delta}с🤗"
     
     Updates:{update_text}
