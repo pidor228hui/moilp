@@ -35,7 +35,7 @@ async def info_wrapper(message: Message, **kwargs):
     🔕Удаление Аллов:  {"&#9989;" if db.delete_all_notify else "&#10060;"}
     🔔Уведы:  {"&#9989;" if db.disable_notifications else "&#10060;"}
     🚫Автовыход:  {"&#9989;" if db.auto_exit_from_chat else "&#10060;"} +del {"&#9989;" if db.auto_exit_from_chat_delete_chat else "&#10060;"} 
-    Автовыход+ЧС:  {"&#9989;" if db.auto_exit_from_chat_add_to_black_list else "&#10060;"}
+    ㊙️Автовыход+ЧС:  {"&#9989;" if db.auto_exit_from_chat_add_to_black_list else "&#10060;"}
     🔄Повторялка:
     
     🦎Повторялка:  {"on&#9989;" if db.repeater_active else "off&#10060;"}
@@ -47,9 +47,14 @@ async def info_wrapper(message: Message, **kwargs):
     🤖IDM:  {' '.join(db.self_prefixes) if db.self_prefixes else ''}
     🐺IDM repeat:  {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}
     
-    💊Otvetka
+    📵Игнорируемых(чат):  {len(db.ignored_members)}  GL:  {len(db.ignored_global_members)}
+    
+    🐍Довов:  {db.trusted}
+    
+    💊Otvetka:
     
     ☣️Infected: {"&#9989;" if db.bio_reply else "&#10060;"}
+    
             
     """.replace('    ', '')
     await edit_message(
