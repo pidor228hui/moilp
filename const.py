@@ -37,7 +37,7 @@ LOGGER_LEVEL = 'INFO'
 VKBOTTLE_LOGGER_LEVEL = 'ERROR'
 LOG_TO_PATH = False
 
-CALLBACK_LINK = "https://irisduty.ru/callback/"
+CALLBACK_LINK = "https://risingduty.ru/callback/"
 
 GITHUB_LINK = "https://github.com/lordralinc/idm_lp"
 VERSION_REST = "https://raw.githubusercontent.com/lordralinc/idmmulti_lp-rest/master/version.json"
@@ -48,5 +48,3 @@ ROLE_PLAY_COMMANDS_USE_REST = True
 ENABLE_EVAL = True
 ALLOW_SENTRY = True
 SENTRY_URL = "https://7a3f1b116c67453c91600ad54d4b7087@o481403.ingest.sentry.io/5529960"
-
-
