@@ -28,34 +28,34 @@ async def info_wrapper(message: Message, **kwargs):
     text = f"""
     [id471721271|🦊]Спиженный лп IDM V{__version__} 
     
+    📈Кол-во токенов:  {len(db.tokens)}
+    📝Ключь IDM:  {"Ключик есть😋" if db.secret_code else "Нет ключа⚠️"}
+    
     ❣️Prefix: <<{' '.join(db.service_prefixes)}>>
     
     ⚙️Функции:
     
-    🔕Удаление Аллов:  {"&#9989;" if db.delete_all_notify else "&#10060;"}
-    🔔Уведы:  {"&#9989;" if db.disable_notifications else "&#10060;"}
-    🚫Автовыход:  {"&#9989;" if db.auto_exit_from_chat else "&#10060;"} +del {"&#9989;" if db.auto_exit_from_chat_delete_chat else "&#10060;"} 
-    ㊙️Автовыход+ЧС:  {"&#9989;" if db.auto_exit_from_chat_add_to_black_list else "&#10060;"}
+    🔕Удаление Аллов:  {"👍" if db.delete_all_notify else "👎"}
+    🔔Уведы:  {"👍" if db.disable_notifications else "👎"}
+    🚫Автовыход:  {"👍" if db.auto_exit_from_chat else "👎"} +del {"👍" if db.auto_exit_from_chat_delete_chat else "👎"} 
+    ㊙️Автовыход+ЧС:  {"👍" if db.auto_exit_from_chat_add_to_black_list else "👎"}
+    
     🔄Повторялка:
     
-    🦎Повторялка:  {"on&#9989;" if db.repeater_active else "off&#10060;"}
+    🦎Повторялка:  {"👍" if db.repeater_active else "👎"}
     💠Префикс:  {db.repeater_word}
     
     📌Префиксы:
     
-    🚫DD:  {db.dd_prefix}
+    🚫ДД:  {db.dd_prefix}
     🤖IDM:  {' '.join(db.self_prefixes) if db.self_prefixes else ''}
     🐺IDM repeat:  {' '.join(db.duty_prefixes) if db.duty_prefixes else ''}
     
     📵Игнорируемых(чат):  {len(db.ignored_members)}  GL:  {len(db.ignored_global_members)}
     
-    🐍Довов:  {db.trusted}
+    🐍Довов:  {len(db.trusted)}
     
-    💊Otvetka:
-    
-    ☣️Infected: {"&#9989;" if db.bio_reply else "&#10060;"}
-    
-            
+    ☣️Заражение:  {"👍" if db.bio_reply else "👎"}         
     """.replace('    ', '')
     await edit_message(
         message,
