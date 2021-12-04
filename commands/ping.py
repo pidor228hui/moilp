@@ -18,8 +18,10 @@ async def get_ping(message: Message, answer: str) -> str:
     if delta < 0:
         delta = "666"
 
-    return f"{answer} Checking ping LP...\n" \
-           f"Время отклика сервера:{delta}с 👩‍💻"
+    return f"{answer} Собираю информацию по пингу...\n" \
+           f"♻️Обменялся с сервером за -> {delta}ms\n" \
+           f"Vk² дал ответ через -> {delta}ms\n" \
+           f"📡На всё про всё ушло -> (±{delta}ms/s) "
 
 
 @user.on.message_handler(FromMe(), text="<prefix:service_prefix> пинг")
@@ -27,23 +29,5 @@ async def get_ping(message: Message, answer: str) -> str:
 async def ping_wrapper(message: Message, **kwargs):
     await edit_message(
         message,
-        await get_ping(message, "Ping🦁")
-    )
-
-
-@user.on.message_handler(FromMe(), text="<prefix:service_prefix> пиу")
-@logger_decorator
-async def pau_wrapper(message: Message, **kwargs):
-    await edit_message(
-        message,
-        await get_ping(message, "Piy🔫")
-    )
-
-
-@user.on.message_handler(FromMe(), text="<prefix:service_prefix> кинг")
-@logger_decorator
-async def king_wrapper(message: Message, **kwargs):
-    await edit_message(
-        message,
-        await get_ping(message, "KING🦍")
+        await get_ping(message, "📚detailed ping")
     )
